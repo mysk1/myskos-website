@@ -1,0 +1,93 @@
+/*===== Variables =====*/
+
+:root {
+    --mode-color: #FFFFFF;
+    --bg-primary-color: #E8B6B9;
+    --fg-primary-color: #23160E;
+    --fg-secondary-color: #9BBCB7;
+
+    --font-primary: 'DotGothic16', sans-serif;
+    --font-secondary: 'DotGothic16', sans-serif;
+
+    --font-size: 1rem;
+    --font-size-small: 0.8rem;
+    --font-size-large: 1.4rem;
+
+}
+
+h1 {
+    font-family: var(--font-primary);
+    color: var(--fg-secondary-color);
+    font-size: var(--font-size-large);
+}
+p {
+    font-size: var(--font-size);
+}
+/*===== Interactive =====*/
+.switch {
+    position: relative;
+    display: inline-block;
+    max-width:fit-content;
+    height: auto;
+    margin: 10px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.switch:hover {
+    cursor: pointer;
+    color:var(--fg-secondary-color);
+}
+
+/*===== Header =====*/
+
+/*===== Body =====*/
+
+body {
+    background: var(--bg-primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    transition: background-color 0.5s ease, all 0.3s ease;
+    font-family: var(--font-primary);
+    overflow-y: scroll;
+}
+body:has(.dark-mode-toggle:checked) {
+    --mode-color: #221e27;
+    --bg-primary-color: #56365d;
+    --fg-primary-color: #553c17;
+    --fg-secondary-color: #C5994E;
+}
+body:has(.high-contrast-toggle:checked) {
+    --mode-color: #000000;
+    --bg-primary-color: #FFFFFF;
+    --fg-primary-color: #FFFFFF;
+    --fg-secondary-color: #FFFFFF;
+}
+body:has(.dyslexia-friendly-toggle:checked) {
+    --font-primary: 'Lexend', sans-serif;
+    --font-size: 1.3rem;
+    --font-size-small: 1rem;
+    --font-size-large: 1.6rem;
+}
+
+main {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+
+    background-color: var(--theme-color);
+    color: var(--bg-primary-color);
+    text-shadow: var(--fg-primary-color) 1px 1px 0;
+   
+
+    min-width: 400px;
+    max-width: 45vw;
+    padding: 20px;
+    margin: 100px 7vw 900px 3vw;
+
+}
