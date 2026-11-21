@@ -57,11 +57,12 @@ body {
     background-size: 700px 1100px;
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    align-items: left;
+    justify-content: center;
+    align-items: center;
     transition: background-color 0.5s ease, all 0.3s ease;
     font-family: var(--font-primary);
     overflow-y: scroll;
+    padding-top: 40px;
 }
 body:has(.dark-mode-toggle:checked) {
     --mode-color: #181719;
@@ -74,6 +75,82 @@ body:has(.dyslexia-friendly-toggle:checked) {
     --font-size: 1.3rem;
     --font-size-small: 1rem;
     --font-size-large: 1.6rem;
+}
+
+/*===== crt effects and glitchy stuff =====*/
+.crt-screen {
+    position: relative;
+    width: 80vw;
+    height: 70vh;
+    padding: 30px;
+    border: 1px solid #1e1e29;
+    border-radius: 3px;
+    box-shadow: 0 0 30px #243b75;
+    overflow: hidden;
+    margin: 0;
+}
+.glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: radial-gradient(ellipse at center, 
+     rgba(107, 101, 220, .4) 0%,
+     rgba(107, 101, 220, 0.1) 50%,
+     rgba(0,0,0,0) 70%
+    );
+    pointer-events:none;
+}
+
+/* scanlines*/
+.crt-screen::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(107, 101, 220, 0.05) 0.1em,
+    transparent 0.1em);
+    background-size: 100% 0.2em;
+    pointer-events: none;
+}
+/*screen flickering*/
+@keyframes flicker {
+    0% {
+        opacity: 0.95;
+    }
+    5% {
+        opacity: 0.9;
+    }
+    10% {
+        opacity: 0.85;
+    }
+    15% {
+        opacity: 0.92;
+    }
+    20% {
+        opacity: 0.98;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% { 
+        opacity: 1;
+    }
+}
+
+.crt-screen::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(61, 71, 209, 0.1);
+    animation: flicker 0.1s infinite;
+    pointer-events: none;
 }
 
 main {
