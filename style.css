@@ -13,7 +13,13 @@
     --font-size-small: 0.8rem;
     --font-size-tiny: 0.5rem;
     --font-size-large: 1.5rem;
+}
 
+/*===== color and option modes =======*/
+
+.light-mode {
+    background-color: #eef0f3;
+    color: rgb(43, 51, 87);
 }
 
 h1 {
@@ -60,8 +66,7 @@ p {
 /*===== Body =====*/
 
 body {
-    background: var(--mode-color) url("img/image0.png") no-repeat right top;
-    background-size: 700px 1100px;
+    background: var(--mode-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,17 +76,21 @@ body {
     overflow-y: scroll;
     padding-top: 40px;
 }
-body:has(.dark-mode-toggle:checked) {
-    --mode-color: #181719;
-    --bg-primary-color: #7ea2c6;
-    --fg-primary-color: #FFFFFF;
-    --fg-secondary-color: #e37957;
+.transparent-bg::before {
+    background:url("img/image0.png");
+    background-size: 40em 55em;
+    background-position: 90% 1% ;
+    background-repeat: no-repeat;
+     content: "";
+     position: absolute;
+     inset: 0; 
+    opacity: 0.6;
+    z-index: -1;
 }
-body:has(.dyslexia-friendly-toggle:checked) {
-    --font-primary: 'Lexend', sans-serif;
-    --font-size: 1.3rem;
-    --font-size-small: 1rem;
-    --font-size-large: 1.6rem;
+@media (max-width: 860px) {
+    .transparent-bg::before {
+        opacity: 0.14;
+    }
 }
 
 /*===== crt effects and glitchy stuff =====*/
